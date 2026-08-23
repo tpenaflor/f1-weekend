@@ -1,0 +1,5 @@
+[safe]
+	directory = /opt/data
+[user]
+	name = Hermes Coder
+	email = hermes.coder@example.com

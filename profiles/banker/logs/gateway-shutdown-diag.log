@@ -1,0 +1,842 @@
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-22T02:15:37Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    448   108 ?        Ss   Aug21   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root        2550 13.3  0.0    232    80 ?        S    02:15   0:00 s6-supervise gateway-qa/log
+root        2568 46.4  0.0   2680  1808 ?        Rs   02:15   0:00  \_ sh ./run gateway-qa/log
+hermes       580  0.0  0.0   2976  1752 ?        Ss   Aug21   0:02 sleep infinity
+hermes       493  0.0  0.0   2976  1772 ?        Ss   Aug21   0:03 sleep infinity
+hermes       500  0.0  0.0   2976  1744 ?        Ss   Aug21   0:03 sleep infinity
+hermes       486  0.0  0.0   2976  1788 ?        Ss   Aug21   0:03 sleep infinity
+--- pstree of self ---
+--- /proc/loadavg ---
+0.00 0.00 0.00 12/387 2623
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-22T02:30:44Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    448   108 ?        Ss   Aug21   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+hermes      2664  1.7  2.0 934584 162580 ?       Sl   02:15   0:16 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p pm gateway run --no-supervise --force
+hermes      2680  1.7  2.0 860604 163152 ?       Sl   02:15   0:16 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p qa gateway run --no-supervise --force
+hermes      2672  1.7  2.2 934380 182012 ?       Sl   02:15   0:15 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p coder gateway run --no-supervise --force
+hermes      2689  1.7  1.9 1008276 160088 ?      Rl   02:15   0:15 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p banker gateway run --no-supervise --force
+hermes      3149  0.0  0.0   2980  1896 ?        Ss   02:30   0:00  \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 2689 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      3151  0.0  0.0   4452  3452 ?        S    02:30   0:00      \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 2689 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      3153  0.0  0.0   6804  4076 ?        R    02:30   0:00          \_ ps auxf --sort=-pcpu
+hermes      3154  0.0  0.0   2984  1852 ?        S    02:30   0:00          \_ head -60
+hermes       580  0.0  0.0   2976  1752 ?        Ss   Aug21   0:02 sleep infinity
+hermes       493  0.0  0.0   2976  1772 ?        Ss   Aug21   0:03 sleep infinity
+hermes       500  0.0  0.0   2976  1744 ?        Ss   Aug21   0:03 sleep infinity
+hermes       486  0.0  0.0   2976  1788 ?        Ss   Aug21   0:03 sleep infinity
+--- pstree of self ---
+--- /proc/loadavg ---
+0.06 0.39 0.25 2/367 3157
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-22T02:31:24Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    448   108 ?        Ss   Aug21   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+hermes      3169 26.1  1.9 932060 161452 ?       Rl   02:30   0:10 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p banker gateway run --no-supervise --force
+hermes      3190  0.0  0.0   2980  1816 ?        Ss   02:31   0:00  \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 3169 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      3192  0.0  0.0   4452  3404 ?        S    02:31   0:00      \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 3169 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      3194  0.0  0.0   6804  4060 ?        R    02:31   0:00          \_ ps auxf --sort=-pcpu
+hermes      3195  0.0  0.0   2984  1760 ?        S    02:31   0:00          \_ head -60
+hermes       580  0.0  0.0   2976  1752 ?        Ss   Aug21   0:02 sleep infinity
+hermes       493  0.0  0.0   2976  1772 ?        Ss   Aug21   0:03 sleep infinity
+hermes       500  0.0  0.0   2976  1744 ?        Ss   Aug21   0:03 sleep infinity
+hermes       486  0.0  0.0   2976  1788 ?        Ss   Aug21   0:03 sleep infinity
+--- pstree of self ---
+--- /proc/loadavg ---
+0.08 0.35 0.24 3/366 3198
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-22T02:57:36Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    448   108 ?        Ss   Aug21   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+hermes      2680  4.7  4.7 2306404 386924 ?      Sl   02:15   2:00 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p qa gateway run --no-supervise --force
+hermes      7797  0.0  0.0   2980  1840 ?        Ss   02:57   0:00  \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 2680 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      7809  0.0  0.0   4452  3412 ?        S    02:57   0:00      \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 2680 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      7824  0.0  0.0   5040  1324 ?        R    02:57   0:00          \_ ps auxf --sort=-pcpu
+hermes      7825  0.0  0.0   2984  1732 ?        S    02:57   0:00          \_ head -60
+hermes      3210  4.5  4.1 1955136 341188 ?      Sl   02:31   1:12 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p banker gateway run --no-supervise --force
+hermes      7800  0.0  0.0   2980  1816 ?        Ss   02:57   0:00  \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 3210 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      7805  0.0  0.0   4452  3452 ?        S    02:57   0:00      \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 3210 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      7816  0.0  0.0   6804  4108 ?        R    02:57   0:00          \_ ps auxf --sort=-pcpu
+hermes      2672  4.0  4.6 2393448 374804 ?      Sl   02:15   1:42 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p coder gateway run --no-supervise --force
+hermes      7799  0.0  0.0   2980  1820 ?        Ss   02:57   0:00  \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 2672 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      7806  0.0  0.0   4452  3436 ?        S    02:57   0:00      \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 2672 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      7820  0.0  0.0   6804  4052 ?        R    02:57   0:00          \_ ps auxf --sort=-pcpu
+hermes      7821  0.0  0.0   2984  1844 ?        S    02:57   0:00          \_ head -60
+hermes      2664  4.0  4.2 2025836 348172 ?      Sl   02:15   1:41 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p pm gateway run --no-supervise --force
+hermes      7798  0.0  0.0   2980  1908 ?        Ss   02:57   0:00  \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 2664 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      7808  0.0  0.0   4452  3300 ?        S    02:57   0:00      \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 2664 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      7822  0.0  0.0   6804  3460 ?        R    02:57   0:00          \_ ps auxf --sort=-pcpu
+hermes      7823  0.0  0.0   2984  1828 ?        S    02:57   0:00          \_ head -60
+hermes       580  0.0  0.0   2976  1752 ?        Ss   Aug21   0:02 sleep infinity
+hermes       493  0.0  0.0   2976  1772 ?        Ss   Aug21   0:03 sleep infinity
+hermes       500  0.0  0.0   2976  1744 ?        Ss   Aug21   0:03 sleep infinity
+hermes       486  0.0  0.0   2976  1788 ?        Ss   Aug21   0:03 sleep infinity
+--- pstree of self ---
+--- /proc/loadavg ---
+0.42 0.47 0.40 5/422 7835
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-22T03:04:00Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    448   108 ?        Ss   Aug21   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+hermes      7914 16.3  3.5 2019748 292540 ?      Sl   02:59   0:39 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p qa gateway run --no-supervise --force
+hermes      8960  0.0  0.0   2980  1816 ?        Ss   03:04   0:00  \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 7914 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      8967  0.0  0.0   4452  3408 ?        S    03:04   0:00      \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 7914 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      8978  0.0  0.0   6804  4136 ?        R    03:04   0:00          \_ ps auxf --sort=-pcpu
+hermes      8979  0.0  0.0   2984  1816 ?        S    03:04   0:00          \_ head -60
+hermes      7898 15.5  3.4 1919996 276440 ?      Sl   02:59   0:37 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p pm gateway run --no-supervise --force
+hermes      7906 13.5  3.3 2025888 272168 ?      Sl   02:59   0:33 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p coder gateway run --no-supervise --force
+hermes      8959  0.0  0.0   2980  1816 ?        Ss   03:04   0:00  \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 7906 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      8965  0.0  0.0   4452  3452 ?        S    03:04   0:00      \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 7906 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      8976  0.0  0.0   6804  4072 ?        R    03:04   0:00          \_ ps auxf --sort=-pcpu
+hermes      8977  0.0  0.0   2984  1764 ?        S    03:04   0:00          \_ head -60
+hermes      7923 12.4  3.1 1515552 252632 ?      Sl   02:59   0:30 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p banker gateway run --no-supervise --force
+hermes      8961  0.0  0.0   2980  1752 ?        Ss   03:04   0:00  \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 7923 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      8969  0.0  0.0   4452  3396 ?        S    03:04   0:00      \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 7923 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      8980  0.0  0.0   6804  4084 ?        R    03:04   0:00          \_ ps auxf --sort=-pcpu
+hermes      8981  0.0  0.0   2984  1800 ?        S    03:04   0:00          \_ head -60
+hermes       580  0.0  0.0   2976  1752 ?        Ss   Aug21   0:02 sleep infinity
+hermes       493  0.0  0.0   2976  1772 ?        Ss   Aug21   0:03 sleep infinity
+hermes       500  0.0  0.0   2976  1744 ?        Ss   Aug21   0:03 sleep infinity
+hermes       486  0.0  0.0   2976  1788 ?        Ss   Aug21   0:03 sleep infinity
+--- pstree of self ---
+--- /proc/loadavg ---
+0.61 0.53 0.45 8/410 8995
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-22T03:12:49Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    448   108 ?        Ss   Aug21   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+hermes      9048 15.9  5.5 2112364 448744 ?      Sl   03:04   1:24 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p qa gateway run --no-supervise --force
+hermes     11880  0.0  0.0   2980  1916 ?        Ss   03:12   0:00  \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 9048 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes     11888  0.0  0.0   4452  3352 ?        S    03:12   0:00      \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 9048 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes     11897  0.0  0.0   6804  4100 ?        R    03:12   0:00          \_ ps auxf --sort=-pcpu
+hermes      9034 14.1  5.0 2272724 412304 ?      Sl   03:04   1:14 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p coder gateway run --no-supervise --force
+hermes      9026 13.8  4.8 2065252 391056 ?      Sl   03:04   1:13 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p pm gateway run --no-supervise --force
+hermes     11879  0.0  0.0   2980  1896 ?        Ss   03:12   0:00  \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 9026 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes     11887  0.0  0.0   4452  3320 ?        S    03:12   0:00      \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 9026 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes     11895  0.0  0.0   6804  4028 ?        R    03:12   0:00          \_ ps auxf --sort=-pcpu
+hermes      9060 10.0  5.0 1900020 410996 ?      Sl   03:04   0:53 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p banker gateway run --no-supervise --force
+hermes     11878  0.0  0.0   2980  1928 ?        Ss   03:12   0:00  \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 9060 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes     11886  0.0  0.0   4452  3404 ?        S    03:12   0:00      \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 9060 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes     11896  0.0  0.0   6804  4044 ?        R    03:12   0:00          \_ ps auxf --sort=-pcpu
+hermes       580  0.0  0.0   2976  1752 ?        Ss   Aug21   0:02 sleep infinity
+hermes       493  0.0  0.0   2976  1772 ?        Ss   Aug21   0:03 sleep infinity
+hermes       500  0.0  0.0   2976  1744 ?        Ss   Aug21   0:03 sleep infinity
+hermes       486  0.0  0.0   2976  1788 ?        Ss   Aug21   0:03 sleep infinity
+--- pstree of self ---
+--- /proc/loadavg ---
+1.36 0.69 0.56 7/419 11912
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-22T03:46:07Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    448   108 ?        Ss   Aug21   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+hermes     13358  6.8  4.0 2028720 329524 ?      Sl   03:29   1:06 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p coder gateway run --no-supervise --force
+hermes     15389  0.0  0.0   2980  1804 ?        Ss   03:46   0:00  \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 13358 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes     15395  0.0  0.0   4452  3404 ?        S    03:46   0:00      \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 13358 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes     15416  0.0  0.0   6804  4116 ?        R    03:46   0:00          \_ ps auxf --sort=-pcpu
+hermes     15417  0.0  0.0   2984  1852 ?        S    03:46   0:00          \_ head -60
+hermes     11967  4.3  4.8 1816644 391844 ?      Sl   03:12   1:26 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p qa gateway run --no-supervise --force
+hermes     15390  0.0  0.0   2980  1752 ?        Ss   03:46   0:00  \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 11967 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes     15400  0.0  0.0   4452  3300 ?        S    03:46   0:00      \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 11967 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes     15409  0.0  0.0   2984  1812 ?        S    03:46   0:00          \_ head -60
+hermes     11947  2.6  4.2 2043756 343880 ?      Sl   03:12   0:53 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p pm gateway run --no-supervise --force
+hermes     15391  0.0  0.0   2980  1928 ?        Ss   03:46   0:00  \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 11947 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes     15398  0.0  0.0   4452  3424 ?        S    03:46   0:00      \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 11947 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes     15412  0.0  0.0   6804  4132 ?        R    03:46   0:00          \_ ps auxf --sort=-pcpu
+hermes     11975  2.6  4.6 1953540 374984 ?      Sl   03:12   0:53 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p banker gateway run --no-supervise --force
+hermes     15392  0.0  0.0   2980  1796 ?        Ss   03:46   0:00  \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 11975 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes     15402  0.0  0.0   4452  3412 ?        S    03:46   0:00      \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 11975 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes     15413  0.0  0.0   6804  4032 ?        R    03:46   0:00          \_ ps auxf --sort=-pcpu
+hermes       580  0.0  0.0   2976  1752 ?        Ss   Aug21   0:02 sleep infinity
+hermes       493  0.0  0.0   2976  1772 ?        Ss   Aug21   0:03 sleep infinity
+hermes       500  0.0  0.0   2976  1744 ?        Ss   Aug21   0:03 sleep infinity
+hermes       486  0.0  0.0   2976  1788 ?        Ss   Aug21   0:03 sleep infinity
+--- pstree of self ---
+--- /proc/loadavg ---
+0.22 0.23 0.22 7/418 15436
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-22T05:46:12Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.4  0.0    452   112 ?        Ss   05:45   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          20  0.0  0.0    232    84 ?        S    05:45   0:00 s6-supervise s6-linux-init-shutdownd
+root          21  0.0  0.0    224    76 ?        Ss   05:45   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+--- pstree of self ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+--- /proc/loadavg ---
+2026-08-22T05:46:12Z
+4.32 1.58 0.74 19/637 559
+--- ps auxf (top 60 by cpu) ---
+--- recent dmesg (oom/killed) ---
+=== end ===
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.4  0.0    452   112 ?        Ss   05:45   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          20  0.0  0.0    232    84 ?        S    05:45   0:00 s6-supervise s6-linux-init-shutdownd
+root          21  0.0  0.0    224    76 ?        Ss   05:45   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+--- pstree of self ---
+--- /proc/loadavg ---
+4.32 1.58 0.74 8/628 579
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-22T05:48:50Z
+--- ps auxf (top 60 by cpu) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-22T05:48:50Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.1  0.0    452   112 ?        Ss   05:48   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    76 ?        S    05:48   0:00 s6-supervise s6-linux-init-shutdownd
+root          19  0.0  0.0    224    76 ?        Ss   05:48   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+--- pstree of self ---
+--- /proc/loadavg ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.1  0.0    452   112 ?        Ss   05:48   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    76 ?        S    05:48   0:00 s6-supervise s6-linux-init-shutdownd
+root          19  0.0  0.0    224    76 ?        Ss   05:48   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+2.42 1.65 0.88 15/635 562
+--- pstree of self ---
+--- recent dmesg (oom/killed) ---
+--- /proc/loadavg ---
+=== end ===
+2.42 1.65 0.88 16/632 582
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-22T06:20:53Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    448   108 ?        Ss   Aug21   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+hermes     17784  3.7  3.9 1587732 319444 ?      Sl   05:37   1:37 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p pm gateway run --no-supervise --force
+hermes     20268  0.0  0.0   2980  1816 ?        Ss   06:20   0:00  \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 17784 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes     20279 20.0  0.0   4452  3280 ?        S    06:20   0:00      \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 17784 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes     20286 50.0  0.0   6804  4016 ?        R    06:20   0:00          \_ ps auxf --sort=-pcpu
+hermes     17809  2.8  3.9 1853188 317212 ?      Sl   05:37   1:13 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p banker gateway run --no-supervise --force
+hermes     20269  0.0  0.0   2980  1868 ?        Ss   06:20   0:00  \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 17809 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes     20274 16.6  0.0   4452  3412 ?        S    06:20   0:00      \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 17809 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes     20289 50.0  0.0   6804  3920 ?        R    06:20   0:00          \_ ps auxf --sort=-pcpu
+hermes     17792  2.3  3.6 1795312 298508 ?      Sl   05:37   1:00 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p coder gateway run --no-supervise --force
+hermes     20265  0.0  0.0   2980  1868 ?        Ss   06:20   0:00  \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 17792 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes     20280  0.0  0.0   4452  3220 ?        S    06:20   0:00      \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 17792 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes     20294 50.0  0.0   6804  4060 ?        R    06:20   0:00          \_ ps auxf --sort=-pcpu
+hermes     17801  0.8  2.0 1081972 162644 ?      Rl   05:37   0:21 /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p qa gateway run --no-supervise --force
+hermes     20264  0.0  0.0   2980  1924 ?        Ss   06:20   0:00  \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 17801 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes     20272 16.6  0.0   4452  3376 ?        S    06:20   0:00      \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 17801 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes     20291 50.0  0.0   6804  4096 ?        D    06:20   0:00          \_ ps auxf --sort=-pcpu
+--- pstree of self ---
+--- /proc/loadavg ---
+2.59 1.49 0.70 14/364 20321
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-22T06:25:24Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    456   112 ?        Ss   06:20   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    80 ?        S    06:20   0:00 s6-supervise s6-linux-init-shutdownd
+root          19  0.0  0.0    224    72 ?        Ss   06:20   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+--- pstree of self ---
+--- /proc/loadavg ---
+0.40 0.93 0.68 9/365 794
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-22T06:25:24Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    456   112 ?        Ss   06:20   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    80 ?        S    06:20   0:00 s6-supervise s6-linux-init-shutdownd
+root          19  0.0  0.0    224    72 ?        Ss   06:20   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+--- pstree of self ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+--- /proc/loadavg ---
+2026-08-22T06:25:24Z
+--- ps auxf (top 60 by cpu) ---
+0.40 0.93 0.68 13/362 856
+--- recent dmesg (oom/killed) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+=== end ===
+2026-08-22T06:25:24Z
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    456   112 ?        Ss   06:20   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    80 ?        S    06:20   0:00 s6-supervise s6-linux-init-shutdownd
+root          19  0.0  0.0    224    72 ?        Ss   06:20   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+--- ps auxf (top 60 by cpu) ---
+--- pstree of self ---
+--- /proc/loadavg ---
+0.40 0.93 0.68 8/357 873
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    456   112 ?        Ss   06:20   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    80 ?        S    06:20   0:00 s6-supervise s6-linux-init-shutdownd
+root          19  0.0  0.0    224    72 ?        Ss   06:20   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+--- recent dmesg (oom/killed) ---
+--- pstree of self ---
+=== end ===
+--- /proc/loadavg ---
+0.40 0.93 0.68 3/353 880
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-22T06:33:36Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    448   112 ?        Ss   06:25   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+hermes       401  3.3  2.3 1444084 194012 ?      Rl   06:26   0:13 /opt/hermes/.venv/bin/python3 -m tui_gateway.entry
+--- pstree of self ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+--- /proc/loadavg ---
+2026-08-22T06:33:36Z
+--- ps auxf (top 60 by cpu) ---
+0.08 0.41 0.57 24/364 664
+--- recent dmesg (oom/killed) ---
+=== end ===
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    448   112 ?        Ss   06:25   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+hermes       401  3.3  2.3 1444084 194012 ?      Rl   06:26   0:14 /opt/hermes/.venv/bin/python3 -m tui_gateway.entry
+--- pstree of self ---
+--- /proc/loadavg ---
+0.08 0.41 0.57 15/358 698
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-22T06:45:20Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    452   108 ?        Ss   06:33   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root         237  0.0  0.0    232    80 ?        S    06:34   0:00 s6-supervise gateway-banker
+hermes       258  2.8  1.9 1008320 159904 ?      Dsl  06:34   0:18  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p banker gateway run --replace
+hermes       421  0.0  0.0   2980  1892 ?        Ss   06:45   0:00      \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 258 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes       432 25.0  0.0   4452  3396 ?        S    06:45   0:00          \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 258 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes       447  100  0.0   6804  4092 ?        R    06:45   0:00              \_ ps auxf --sort=-pcpu
+root         235  0.0  0.0    232    80 ?        S    06:34   0:00 s6-supervise gateway-pm
+hermes       239  2.8  1.9 1008132 159540 ?      Dsl  06:34   0:19  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p pm gateway run --replace
+hermes       420  0.0  0.0   2980  1736 ?        Ss   06:45   0:00      \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 239 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes       434 25.0  0.0   4452  3372 ?        S    06:45   0:00          \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 239 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes       446  100  0.0   6804  4044 ?        R    06:45   0:00              \_ ps auxf --sort=-pcpu
+root         245  0.0  0.0    232    76 ?        S    06:34   0:00 s6-supervise gateway-qa
+hermes       254  2.8  2.3 1008288 187224 ?      Rsl  06:34   0:19  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p qa gateway run --replace
+hermes       427  0.0  0.0   2980  1748 ?        Ss   06:45   0:00      \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 254 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes       438  0.0  0.0   4452  3384 ?        S    06:45   0:00          \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 254 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes       450  100  0.0   6804  4096 ?        R    06:45   0:00              \_ ps auxf --sort=-pcpu
+root          18  0.0  0.0    232    80 ?        S    06:33   0:00 s6-supervise s6-linux-init-shutdownd
+root          19  0.0  0.0    224    72 ?        Ss   06:33   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+--- pstree of self ---
+2026-08-22T06:45:20Z
+--- /proc/loadavg ---
+--- ps auxf (top 60 by cpu) ---
+0.01 0.11 0.35 24/359 489
+--- recent dmesg (oom/killed) ---
+=== end ===
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    452   108 ?        Ss   06:33   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root         237  0.0  0.0    232    80 ?        S    06:34   0:00 s6-supervise gateway-banker
+hermes       258  2.8  2.0 1008304 164028 ?      Rsl  06:34   0:19  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p banker gateway run --replace
+hermes       421  0.0  0.0   2980  1892 ?        Ss   06:45   0:00      \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 258 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes       432 12.5  0.0      0     0 ?        Z    06:45   0:00          \_ [bash] <defunct>
+root         235  0.0  0.0    232    80 ?        S    06:34   0:00 s6-supervise gateway-pm
+hermes       239  2.8  1.9 1008132 159540 ?      Dsl  06:34   0:19  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p pm gateway run --replace
+hermes       420  0.0  0.0   2980  1736 ?        Ss   06:45   0:00      \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 239 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes       434 12.5  0.0   4452  3372 ?        S    06:45   0:00          \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 239 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes       497  0.0  0.0   3012  1792 ?        R    06:45   0:00              \_ tail -20
+root         245  0.0  0.0    232    76 ?        S    06:34   0:00 s6-supervise gateway-qa
+hermes       254  2.8  2.3 1008288 187224 ?      Dsl  06:34   0:19  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p qa gateway run --replace
+hermes       427  0.0  0.0   2980  1748 ?        Ss   06:45   0:00      \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 254 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes       438  0.0  0.0   4452  3384 ?        S    06:45   0:00          \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 254 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+root          18  0.0  0.0    232    80 ?        S    06:33   0:00 s6-supervise s6-linux-init-shutdownd
+root          19  0.0  0.0    224    72 ?        Ss   06:33   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+--- pstree of self ---
+--- /proc/loadavg ---
+0.01 0.11 0.35 27/353 524
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-22T06:55:59Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    448   112 ?        Ss   06:45   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    84 ?        S    06:45   0:00 s6-supervise s6-linux-init-shutdownd
+root          21  0.0  0.0    224    72 ?        Ss   06:45   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+--- pstree of self ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+--- /proc/loadavg ---
+2026-08-22T06:55:59Z
+0.14 0.12 0.25 16/362 660
+--- ps auxf (top 60 by cpu) ---
+--- recent dmesg (oom/killed) ---
+=== end ===
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    448   112 ?        Ss   06:45   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    84 ?        S    06:45   0:00 s6-supervise s6-linux-init-shutdownd
+root          21  0.0  0.0    224    72 ?        Ss   06:45   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+--- pstree of self ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-22T06:55:59Z
+--- /proc/loadavg ---
+--- ps auxf (top 60 by cpu) ---
+0.14 0.12 0.25 16/360 715
+--- recent dmesg (oom/killed) ---
+=== end ===
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    448   112 ?        Ss   06:45   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    84 ?        S    06:45   0:00 s6-supervise s6-linux-init-shutdownd
+root          21  0.0  0.0    224    72 ?        Ss   06:45   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+--- pstree of self ---
+--- /proc/loadavg ---
+0.14 0.12 0.25 13/350 746
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-22T21:17:46Z
+--- ps auxf (top 60 by cpu) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-22T21:17:46Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    452   116 ?        Ss   06:56   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+hermes      6511  2.0  2.6 1439960 213416 ?      Rl   21:00   0:21 /opt/hermes/.venv/bin/python3 -m tui_gateway.entry
+--- pstree of self ---
+--- /proc/loadavg ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    452   116 ?        Ss   06:56   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+hermes      6511  2.0  2.6 1439960 213416 ?      Rl   21:00   0:21 /opt/hermes/.venv/bin/python3 -m tui_gateway.entry
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+--- pstree of self ---
+0.42 0.40 0.31 27/405 7878
+2026-08-22T21:17:46Z
+--- recent dmesg (oom/killed) ---
+--- /proc/loadavg ---
+--- ps auxf (top 60 by cpu) ---
+0.42 0.40 0.31 14/406 7906
+=== end ===
+--- recent dmesg (oom/killed) ---
+=== end ===
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    452   116 ?        Ss   06:56   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+hermes      6511  2.0  2.6 1439960 213836 ?      Rl   21:00   0:21 /opt/hermes/.venv/bin/python3 -m tui_gateway.entry
+--- pstree of self ---
+--- /proc/loadavg ---
+0.42 0.40 0.31 18/386 7963
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-22T21:40:39Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    452   112 ?        Ss   21:17   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    80 ?        S    21:17   0:00 s6-supervise s6-linux-init-shutdownd
+root          19  0.0  0.0    224    76 ?        Ss   21:17   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+--- pstree of self ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+--- /proc/loadavg ---
+2026-08-22T21:40:39Z
+--- ps auxf (top 60 by cpu) ---
+0.02 0.26 0.30 14/365 1640
+--- recent dmesg (oom/killed) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-22T21:40:39Z
+=== end ===
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    452   112 ?        Ss   21:17   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    80 ?        S    21:17   0:00 s6-supervise s6-linux-init-shutdownd
+root          19  0.0  0.0    224    76 ?        Ss   21:17   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+--- pstree of self ---
+--- /proc/loadavg ---
+0.02 0.26 0.30 9/358 1677
+--- recent dmesg (oom/killed) ---
+=== end ===
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    452   112 ?        Ss   21:17   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    80 ?        S    21:17   0:00 s6-supervise s6-linux-init-shutdownd
+root          19  0.0  0.0    224    76 ?        Ss   21:17   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+--- pstree of self ---
+--- /proc/loadavg ---
+0.02 0.26 0.30 7/345 1698
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-22T21:41:28Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.2  0.0    448   112 ?        Ss   21:40   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    80 ?        S    21:40   0:00 s6-supervise s6-linux-init-shutdownd
+root          20  0.0  0.0    224    72 ?        Ss   21:40   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+--- pstree of self ---
+--- /proc/loadavg ---
+1.38 0.56 0.40 20/360 517
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-22T21:41:28Z
+--- ps auxf (top 60 by cpu) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-22T21:41:28Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.2  0.0    448   112 ?        Ss   21:40   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    80 ?        S    21:40   0:00 s6-supervise s6-linux-init-shutdownd
+root          20  0.0  0.0    224    72 ?        Ss   21:40   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+--- pstree of self ---
+--- /proc/loadavg ---
+1.51 0.60 0.41 7/331 596
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.2  0.0    448   112 ?        Ss   21:40   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    80 ?        S    21:40   0:00 s6-supervise s6-linux-init-shutdownd
+root          20  0.0  0.0    224    72 ?        Ss   21:40   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+--- recent dmesg (oom/killed) ---
+--- pstree of self ---
+--- /proc/loadavg ---
+=== end ===
+1.51 0.60 0.41 7/327 601
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-22T22:02:38Z
+--- ps auxf (top 60 by cpu) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    448   108 ?        Ss   21:41   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    84 ?        S    21:41   0:00 s6-supervise s6-linux-init-shutdownd
+root          20  0.0  0.0    224    76 ?        Ss   21:41   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+--- pstree of self ---
+2026-08-22T22:02:38Z
+--- /proc/loadavg ---
+--- ps auxf (top 60 by cpu) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+0.00 0.14 0.32 15/367 1610
+--- recent dmesg (oom/killed) ---
+2026-08-22T22:02:38Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    448   108 ?        Ss   21:41   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    84 ?        S    21:41   0:00 s6-supervise s6-linux-init-shutdownd
+root          20  0.0  0.0    224    76 ?        Ss   21:41   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+=== end ===
+--- pstree of self ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+--- /proc/loadavg ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    448   108 ?        Ss   21:41   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    84 ?        S    21:41   0:00 s6-supervise s6-linux-init-shutdownd
+root          20  0.0  0.0    224    76 ?        Ss   21:41   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+2026-08-22T22:02:38Z
+0.00 0.14 0.32 9/368 1654
+--- pstree of self ---
+--- ps auxf (top 60 by cpu) ---
+--- recent dmesg (oom/killed) ---
+--- /proc/loadavg ---
+=== end ===
+0.00 0.14 0.32 13/362 1672
+--- recent dmesg (oom/killed) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    448   108 ?        Ss   21:41   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    84 ?        S    21:41   0:00 s6-supervise s6-linux-init-shutdownd
+root          20  0.0  0.0    224    76 ?        Ss   21:41   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+--- pstree of self ---
+=== end ===
+--- /proc/loadavg ---
+0.00 0.14 0.32 7/350 1690
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-23T03:46:16Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         390  0.0  0.0   4328  3728 pts/0    Ss+  Aug22   0:00 /bin/bash
+root           1  0.0  0.0    452   112 ?        Ss   Aug22   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+hermes       297  0.0  0.0   2976  1752 ?        S    Aug22   0:04 sleep infinity
+--- pstree of self ---
+--- /proc/loadavg ---
+0.08 0.08 0.01 10/390 1637
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-23T04:29:38Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         390  0.0  0.0   4328  3728 pts/0    Ss+  Aug22   0:00 /bin/bash
+root           1  0.0  0.0    452   112 ?        Ss   Aug22   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root         242  0.0  0.0    232    80 ?        S    Aug22   0:00 s6-supervise gateway-pm
+hermes      1673  4.0  4.1 1721260 336652 ?      Dsl  03:46   1:45  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p pm gateway run --replace
+hermes      5688  0.0  0.0   2980  1820 ?        Ss   04:29   0:00      \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 1673 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      5701 25.0  0.0   4452  3456 ?        S    04:29   0:00          \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 1673 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      5724  0.0  0.0   6804  3444 ?        R    04:29   0:00              \_ ps auxf --sort=-pcpu
+root         265  0.0  0.0    232    80 ?        S    Aug22   0:00 s6-supervise gateway-coder
+hermes      5114  4.9  3.4 1753240 284424 ?      Rsl  04:21   0:23  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p coder gateway run --replace
+hermes      5692  0.0  0.0   2980  1932 ?        Ss   04:29   0:00      \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 5114 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      5705  0.0  0.0   4452  3312 ?        S    04:29   0:00          \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 5114 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      5714 50.0  0.0   6804  4112 ?        R    04:29   0:00              \_ ps auxf --sort=-pcpu
+root         253  0.0  0.0    232    84 ?        S    Aug22   0:00 s6-supervise gateway-qa
+hermes      1770  3.8  3.9 1929008 320732 ?      Rsl  03:46   1:38  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p qa gateway run --replace
+hermes      5691  0.0  0.0   2980  1900 ?        Ss   04:29   0:00      \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 1770 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      5707  0.0  0.0   4452  3392 ?        S    04:29   0:00          \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 1770 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      5725  0.0  0.0   6804  3716 ?        R    04:29   0:00              \_ ps auxf --sort=-pcpu
+hermes      5726  0.0  0.0   2984  1840 ?        S    04:29   0:00              \_ head -60
+root         246  0.0  0.0    232    80 ?        S    Aug22   0:00 s6-supervise gateway-banker
+hermes      1677  1.4  2.8 1639200 231948 ?      Dsl  03:46   0:36  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p banker gateway run --replace
+hermes      5689  0.0  0.0   2980  1928 ?        Ss   04:29   0:00      \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 1677 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      5700  0.0  0.0   4452  3368 ?        S    04:29   0:00          \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 1677 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      5719 50.0  0.0   6804  4052 ?        R    04:29   0:00              \_ ps auxf --sort=-pcpu
+root         249  0.0  0.0    232    84 ?        S    Aug22   0:00 s6-supervise gateway-default
+hermes      1665  1.1  1.9 932512 157612 ?       Rsl  03:46   0:29  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes gateway run --replace
+hermes      5690  0.0  0.0   2980  1928 ?        Ss   04:29   0:00      \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 1665 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      5704  0.0  0.0   4452  3440 ?        S    04:29   0:00          \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 1665 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      5717 50.0  0.0   6804  4096 ?        R    04:29   0:00              \_ ps auxf --sort=-pcpu
+root          24  0.0  0.0    232    80 ?        S    Aug22   0:00 s6-supervise s6-linux-init-shutdownd
+root          27  0.0  0.0    224    72 ?        Ss   Aug22   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+--- pstree of self ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+--- /proc/loadavg ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-23T04:29:38Z
+0.18 0.21 0.18 19/394 5766
+--- ps auxf (top 60 by cpu) ---
+--- recent dmesg (oom/killed) ---
+2026-08-23T04:29:38Z
+--- ps auxf (top 60 by cpu) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-23T04:29:38Z
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         390  0.0  0.0   4328  3728 pts/0    Ss+  Aug22   0:00 /bin/bash
+root           1  0.0  0.0    452   112 ?        Ss   Aug22   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root         242  0.0  0.0    232    80 ?        S    Aug22   0:00 s6-supervise gateway-pm
+hermes      1673  4.0  4.1 1721260 336652 ?      Ssl  03:46   1:45  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p pm gateway run --replace
+hermes      5688  0.0  0.0   2980  1820 ?        Ss   04:29   0:00      \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 1673 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      5701 20.0  0.0   4452  3456 ?        R    04:29   0:00          \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 1673 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+root         265  0.0  0.0    232    80 ?        S    Aug22   0:00 s6-supervise gateway-coder
+hermes      5114  4.9  3.4 1753240 284424 ?      Ssl  04:21   0:23  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p coder gateway run --replace
+hermes      5692  0.0  0.0   2980  1932 ?        Ss   04:29   0:00      \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 5114 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      5705 11.1  0.0   4452  3312 ?        S    04:29   0:00          \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 5114 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+root         253  0.0  0.0    232    84 ?        S    Aug22   0:00 s6-supervise gateway-qa
+hermes      1770  3.8  3.9 1929008 320732 ?      Ssl  03:46   1:38  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p qa gateway run --replace
+hermes      5691  0.0  0.0   2980  1900 ?        Ss   04:29   0:00      \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 1770 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      5707  0.0  0.0   4452  3392 ?        S    04:29   0:00          \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 1770 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+root         246  0.0  0.0    232    80 ?        S    Aug22   0:00 s6-supervise gateway-banker
+hermes      1677  1.4  2.8 1639200 231948 ?      Ssl  03:46   0:36  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p banker gateway run --replace
+hermes      5689  0.0  0.0   2980  1928 ?        Ss   04:29   0:00      \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 1677 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      5700  0.0  0.0      0     0 ?        R    04:29   0:00          \_ [bash]
+root         249  0.0  0.0    232    84 ?        S    Aug22   0:00 s6-supervise gateway-default
+hermes      1665  1.1  1.9 932512 157612 ?       Ssl  03:46   0:29  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes gateway run --replace
+hermes      5734  0.0  0.0   2980  1900 ?        Ss   04:29   0:00      \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 1665 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      5753  0.0  0.0   4452  3456 ?        S    04:29   0:00          \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 1665 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+root          24  0.0  0.0    232    80 ?        S    Aug22   0:00 s6-supervise s6-linux-init-shutdownd
+root          27  0.0  0.0    224    72 ?        Ss   Aug22   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         390  0.0  0.0   4328  3728 pts/0    Ss+  Aug22   0:00 /bin/bash
+root           1  0.0  0.0    452   112 ?        Ss   Aug22   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root         242  0.0  0.0    232    80 ?        S    Aug22   0:00 s6-supervise gateway-pm
+hermes      1673  4.0  4.1 1721260 336652 ?      Ssl  03:46   1:45  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p pm gateway run --replace
+hermes      5688  0.0  0.0   2980  1820 ?        Ss   04:29   0:00      \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 1673 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      5701 20.0  0.0   4452  3456 ?        R    04:29   0:00          \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 1673 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+root         265  0.0  0.0    232    80 ?        S    Aug22   0:00 s6-supervise gateway-coder
+hermes      5114  4.9  3.4 1753240 284424 ?      Ssl  04:21   0:23  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p coder gateway run --replace
+hermes      5692  0.0  0.0   2980  1932 ?        Ss   04:29   0:00      \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 5114 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      5705 11.1  0.0      0     0 ?        R    04:29   0:00          \_ [bash]
+root         253  0.0  0.0    232    84 ?        S    Aug22   0:00 s6-supervise gateway-qa
+hermes      1770  3.8  3.9 1929008 320732 ?      Ssl  03:46   1:38  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p qa gateway run --replace
+hermes      5691  0.0  0.0   2980  1900 ?        Ss   04:29   0:00      \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 1770 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      5707  0.0  0.0   4452  3392 ?        S    04:29   0:00          \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 1770 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+root         246  0.0  0.0    232    80 ?        S    Aug22--- ps auxf (top 60 by cpu) ---
+   0:00 s6-supervise gateway-banker
+hermes      1677  1.4  2.8 1639200 231948 ?      Ssl  03:46   0:36  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p banker gateway run --replace
+hermes      5689  0.0  0.0   2980  1928 ?        Ss   04:29   0:00      \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 1677 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      5700  0.0  0.0      0     0 ?        S    04:29   0:00          \_ [bash]
+root         249  0.0  0.0    232    84 ?        S    Aug22   0:00 s6-supervise gateway-default
+hermes      1665  1.1  1.9 932512 157612 ?       Ssl  03:46   0:29  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes gateway run --replace
+hermes      5734  0.0  0.0   2980  1900 ?        Ss   04:29   0:00      \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 1665 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      5753  0.0  0.0   4452  3456 ?        S    04:29   0:00          \_ bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 1665 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+root          24  0.0  0.0    232    80 ?        S    Aug22   0:00 s6-supervise s6-linux-init-shutdownd
+root          27  0.0  0.0    224    72 ?        Ss   Aug22   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+--- pstree of self ---
+--- pstree of self ---
+--- /proc/loadavg ---
+--- /proc/loadavg ---
+0.18 0.21 0.18 13/395 5843
+--- recent dmesg (oom/killed) ---
+0.18 0.21 0.18 18/398 5856
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== end ===
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         390  0.0  0.0   4328  3728 pts/0    Ss+  Aug22   0:00 /bin/bash
+root           1  0.0  0.0    452   112 ?        Ss   Aug22   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root         242  0.0  0.0    232    80 ?        S    Aug22   0:00 s6-supervise gateway-pm
+hermes      1673  4.0  4.1 1721260 336652 ?      Ssl  03:46   1:45  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p pm gateway run --replace
+hermes      5688  0.0  0.0      0     0 ?        Zs   04:29   0:00      \_ [timeout] <defunct>
+root         265  0.0  0.0    232    80 ?        S    Aug22   0:00 s6-supervise gateway-coder
+hermes      5114  4.9  3.5 1753240 284456 ?      Ssl  04:21   0:23  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p coder gateway run --replace
+hermes      5692  0.0  0.0      0     0 ?        Zs   04:29   0:00      \_ [timeout] <defunct>
+root         253  0.0  0.0    232    84 ?        S    Aug22   0:00 s6-supervise gateway-qa
+hermes      1770  3.8  3.9 1929008 320732 ?      Ssl  03:46   1:38  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p qa gateway run --replace
+hermes      5691  0.0  0.0      0     0 ?        Zs   04:29   0:00      \_ [timeout] <defunct>
+root         246  0.0  0.0    232    80 ?        S    Aug22   0:00 s6-supervise gateway-banker
+hermes      1677  1.4  2.8 1639200 232260 ?      Rsl  03:46   0:36  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes -p banker gateway run --replace
+hermes      5689  0.0  0.0      0     0 ?        Zs   04:29   0:00      \_ [timeout] <defunct>
+root         249  0.0  0.0    232    84 ?        S    Aug22   0:00 s6-supervise gateway-default
+hermes      1665  1.1  1.9 932480 157992 ?       Rsl  03:46   0:29  \_ /opt/hermes/.venv/bin/python3 /opt/hermes/.venv/bin/hermes gateway run --replace
+hermes      5734  0.0  0.0   2980  1900 ?        Ss   04:29   0:00      \_ timeout 5 bash -c echo '=== shutdown diagnostic @ SIGTERM ==='; echo '--- date ---'; date -u +%Y-%m-%dT%H:%M:%SZ; echo '--- ps auxf (top 60 by cpu) ---'; ps auxf --sort=-pcpu 2>/dev/null | head -60; echo '--- pstree of self ---'; pstree -plau 1665 2>/dev/null | head -40 || true; echo '--- /proc/loadavg ---'; cat /proc/loadavg 2>/dev/null || true; echo '--- recent dmesg (oom/killed) ---'; dmesg -T 2>/dev/null | tail -20 || journalctl --user -n 20 --no-pager 2>/dev/null | tail -20 || true; echo '=== end ==='
+hermes      5753 14.2  0.0      0     0 ?        Z    04:29   0:00          \_ [bash] <defunct>
+root          24  0.0  0.0    232    80 ?        S    Aug22   0:00 s6-supervise s6-linux-init-shutdownd
+root          27  0.0  0.0    224    72 ?        Ss   Aug22   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+--- pstree of self ---
+--- /proc/loadavg ---
+0.18 0.21 0.18 6/371 5886
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-23T04:30:37Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.2  0.0    448   108 ?        Ss   04:29   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    84 ?        S    04:29   0:00 s6-supervise s6-linux-init-shutdownd
+root          20  0.0  0.0    224    72 ?        Ss   04:29   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+root         112  4.2  1.7 3527220 141200 ?      Ssl  04:29   0:01 /opt/data/.local/bin/agy -p what is the name of this project?
+--- pstree of self ---
+--- /proc/loadavg ---
+1.63 0.56 0.30 20/368 554
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-23T04:30:37Z
+--- ps auxf (top 60 by cpu) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.2  0.0    448   108 ?        Ss   04:29   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    84 ?        S    04:29   0:00 s6-supervise s6-linux-init-shutdownd
+root          20  0.0  0.0    224    72 ?        Ss   04:29   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+--- pstree of self ---
+2026-08-23T04:30:37Z
+--- ps auxf (top 60 by cpu) ---
+--- /proc/loadavg ---
+1.63 0.56 0.30 11/338 652
+--- recent dmesg (oom/killed) ---
+=== end ===
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.2  0.0    448   108 ?        Ss   04:29   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    84 ?        S    04:29   0:00 s6-supervise s6-linux-init-shutdownd
+root          20  0.0  0.0    224    72 ?        Ss   04:29   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+--- pstree of self ---
+--- /proc/loadavg ---
+1.63 0.56 0.30 11/301 682
+--- recent dmesg (oom/killed) ---
+=== end ===
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-23T04:32:30Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    448   108 ?        Ss   04:30   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    84 ?        S    04:30   0:00 s6-supervise s6-linux-init-shutdownd
+root          21  0.0  0.0    224    72 ?        Ss   04:30   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+--- pstree of self ---
+2026-08-23T04:32:30Z
+--- /proc/loadavg ---
+--- ps auxf (top 60 by cpu) ---
+1.41 0.92 0.47 25/407 709
+--- recent dmesg (oom/killed) ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+2026-08-23T04:32:30Z
+--- ps auxf (top 60 by cpu) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    448   108 ?        Ss   04:30   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    84 ?        S    04:30   0:00 s6-supervise s6-linux-init-shutdownd
+root          21  0.0  0.0    224    72 ?        Ss   04:30   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+--- pstree of self ---
+=== shutdown diagnostic @ SIGTERM ===
+--- date ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    448   108 ?        Ss   04:30   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    84 ?        S    04:30   0:00 s6-supervise s6-linux-init-shutdownd
+root          21  0.0  0.0    224    72 ?        Ss   04:30   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+=== end ===
+2026-08-23T04:32:30Z
+--- ps auxf (top 60 by cpu) ---
+--- pstree of self ---
+--- /proc/loadavg ---
+1.41 0.92 0.47 26/408 764
+--- /proc/loadavg ---
+--- recent dmesg (oom/killed) ---
+1.41 0.92 0.47 13/405 772
+--- recent dmesg (oom/killed) ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0    448   108 ?        Ss   04:30   0:00 /package/admin/s6/command/s6-svscan -d4 -- /run/service
+root          18  0.0  0.0    232    84 ?        S    04:30   0:00 s6-supervise s6-linux-init-shutdownd
+root          21  0.0  0.0    224    72 ?        Ss   04:30   0:00  \_ /package/admin/s6-linux-init/command/s6-linux-init-shutdownd -d3 -c /run/s6/basedir -g 3000 -C -B
+=== end ===
+--- pstree of self ---
+=== end ===
+--- /proc/loadavg ---
+1.41 0.92 0.47 13/397 802
+--- recent dmesg (oom/killed) ---
+=== end ===

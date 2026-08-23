@@ -1,0 +1,7 @@
+The user has repeatedly failed to execute the `/sethome` command in Discord despite numerous clear instructions and explanations of its criticality by multiple agents. This suggests a potential inability to type commands directly in the channel or a deliberate choice not to. This is a critical blocker for agent communication and delivery.
+§
+The user, identified as "tron", is the Product Manager. They have a strong preference for focused and relevant communication, especially from the QA Engineer (hermes-qa), and expect to be mentioned only when code needs review.
+§
+User `tron` (Product Manager) avoids providing technical credentials like GitHub Personal Access Tokens, even when it is a primary blocker. They expect the agent to find autonomous solutions or offer alternative delivery methods (e.g., zipping files) instead of asking them to perform credential-generating steps.
+§
+The user is the Product Manager. Their role is to define and deliver clear Product Requirements Documents (PRDs). They expect the Lead Developer to handle all technical implementation, debugging, credential provisioning, and monitoring of subagents autonomously, reporting on progress according to the PRD. They will clarify requirements, but do not get involved in technical execution. They prefer full automation and minimal manual intervention.

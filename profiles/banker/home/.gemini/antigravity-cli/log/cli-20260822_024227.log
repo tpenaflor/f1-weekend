@@ -1,0 +1,126 @@
+ERROR: logging before google.Init: I0822 02:42:27.513068      24 server.go:1478] Starting language server process with pid 4137
+ERROR: logging before google.Init: I0822 02:42:27.520146      24 server.go:1531] Language server version: 1.1.18
+ERROR: logging before google.Init: I0822 02:42:27.520797      24 server.go:575] Language server will attempt to listen on host localhost
+ERROR: logging before google.Init: I0822 02:42:27.530106      24 server.go:590] Language server listening on random port at 40137 for HTTPS (gRPC)
+ERROR: logging before google.Init: I0822 02:42:27.530853      24 server.go:598] Language server listening on random port at 45787 for HTTP
+ERROR: logging before google.Init: E0822 02:42:27.820642      48 errorreport.go:223] Failed to poll ListExperiments: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: I0822 02:42:27.821752      48 model_configs.go:62] Auth mode is unspecified, skipping fetchAvailableModels and returning empty response
+ERROR: logging before google.Init: W0822 02:42:27.827461      24 cache.go:56] Cache(loadCodeAssistResponse): Singleflight refresh failed: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: E0822 02:42:27.827836      24 errorreport.go:223] error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: W0822 02:42:27.829477      24 cache.go:56] Cache(userInfo): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: E0822 02:42:27.829846      24 errorreport.go:223] failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: W0822 02:42:27.830775      24 cache.go:56] Cache(loadCodeAssistResponse): Singleflight refresh failed: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: E0822 02:42:27.831159      24 errorreport.go:223] error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: W0822 02:42:27.831652      24 cache.go:56] Cache(userInfo): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: E0822 02:42:27.832023      24 errorreport.go:223] failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: W0822 02:42:27.832653      24 cache.go:56] Cache(loadCodeAssistResponse): Singleflight refresh failed: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: E0822 02:42:27.833024      24 errorreport.go:223] error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: W0822 02:42:27.833765      24 cache.go:56] Cache(userInfo): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: E0822 02:42:27.834076      24 errorreport.go:223] failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: I0822 02:42:27.838224      24 server.go:1783] Generated and saved persistent installation UUID: 05a5e732-27e4-4bcb-8998-0e1890cd3eee
+ERROR: logging before google.Init: I0822 02:42:27.841845      24 server.go:1797] Generated and saved default remote control hostname: 991a72dca85a-bright-flare
+ERROR: logging before google.Init: W0822 02:42:27.844610      24 launchmanager.go:69] Entering local chrome mode! This is WRONG unless you are running tests or in eval mode on Linux.
+ERROR: logging before google.Init: I0822 02:42:27.851128     103 migrate.go:50] Migration marker /opt/data/profiles/banker/home/.gemini/config/.migrated does not exist. Attempting migration from AppDataDir /opt/data/profiles/banker/home/.gemini/antigravity-cli.
+ERROR: logging before google.Init: W0822 02:42:27.851314      24 defaults.go:765] failed to get cs path: cs path /usr/bin/cs invalid
+ERROR: logging before google.Init: I0822 02:42:27.852693      24 manager.go:98] Creating trajectory store manager with proto store and SQLite store
+ERROR: logging before google.Init: I0822 02:42:27.856067     103 migrate.go:158] Migration complete, marked with /opt/data/profiles/banker/home/.gemini/config/.migrated
+ERROR: logging before google.Init: W0822 02:42:27.857404      24 cache.go:56] Cache(loadCodeAssistResponse): Singleflight refresh failed: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: E0822 02:42:27.857732      24 errorreport.go:223] error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: W0822 02:42:27.858127      24 cache.go:56] Cache(userInfo): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: E0822 02:42:27.858524      24 errorreport.go:223] failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: I0822 02:42:27.891540      55 manager.go:88] Migration [MIGRATION_ID_SIDECAR_USER_CONFIG_BYPASS] is disabled, skipping entirely
+ERROR: logging before google.Init: I0822 02:42:27.892430      55 manager.go:91] Migration [MIGRATION_ID_SANITY_CHECK_PROJECT_URIS] is enabled
+ERROR: logging before google.Init: I0822 02:42:27.892714      55 manager.go:105] Migration [MIGRATION_ID_SANITY_CHECK_PROJECT_URIS] starting
+ERROR: logging before google.Init: I0822 02:42:27.896363      55 project_uris_migration.go:42] Starting ProjectUrisMigration
+ERROR: logging before google.Init: I0822 02:42:27.897368      55 manager.go:125] Migration [MIGRATION_ID_SANITY_CHECK_PROJECT_URIS] completed successfully in 1.003689ms
+ERROR: logging before google.Init: I0822 02:42:27.899497      55 manager.go:91] Migration [MIGRATION_ID_PLUGIN_ENABLEMENT] is enabled
+ERROR: logging before google.Init: I0822 02:42:27.899770      55 manager.go:105] Migration [MIGRATION_ID_PLUGIN_ENABLEMENT] starting
+ERROR: logging before google.Init: I0822 02:42:27.902328      55 manager.go:125] Migration [MIGRATION_ID_PLUGIN_ENABLEMENT] completed successfully in 390.534µs
+ERROR: logging before google.Init: I0822 02:42:27.904513      55 manager.go:91] Migration [MIGRATION_ID_BUILTIN_SIDECARS_TO_PLUGINS] is enabled
+ERROR: logging before google.Init: I0822 02:42:27.904875      55 manager.go:105] Migration [MIGRATION_ID_BUILTIN_SIDECARS_TO_PLUGINS] starting
+ERROR: logging before google.Init: I0822 02:42:27.908965      55 manager.go:125] Migration [MIGRATION_ID_BUILTIN_SIDECARS_TO_PLUGINS] completed successfully in 183.447µs
+ERROR: logging before google.Init: I0822 02:42:27.946835      24 server.go:2833] Auth succeeded, refreshing features and managers
+ERROR: logging before google.Init: E0822 02:42:27.947524      24 errorreport.go:223] Failed to poll ListExperiments: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: I0822 02:42:27.948171      24 server.go:2839] State refresh took 0ms
+ERROR: logging before google.Init: I0822 02:42:27.948890      24 server.go:2853] [RemoteControl] Subscription callback triggered.
+ERROR: logging before google.Init: I0822 02:42:27.949315      24 server.go:2855] [RemoteControl] RemoteControlEnabled value: false
+ERROR: logging before google.Init: I0822 02:42:27.949687      24 server.go:3150] [RemoteControl] Resolved proxyServerURL: ""
+ERROR: logging before google.Init: I0822 02:42:27.950457      58 manager.go:88] Migration [MIGRATION_ID_SIDECAR_USER_CONFIG_BYPASS] is disabled, skipping entirely
+ERROR: logging before google.Init: I0822 02:42:27.951004      58 manager.go:91] Migration [MIGRATION_ID_SANITY_CHECK_PROJECT_URIS] is enabled
+ERROR: logging before google.Init: I0822 02:42:27.951539      58 manager.go:100] Migration [MIGRATION_ID_SANITY_CHECK_PROJECT_URIS] already has status MIGRATION_STATUS_COMPLETED, skipping
+ERROR: logging before google.Init: I0822 02:42:27.950172      24 profiler.go:154] Continuous pprof profiling is disabled.
+ERROR: logging before google.Init: I0822 02:42:27.952041      58 manager.go:91] Migration [MIGRATION_ID_PLUGIN_ENABLEMENT] is enabled
+ERROR: logging before google.Init: I0822 02:42:27.952964      58 manager.go:100] Migration [MIGRATION_ID_PLUGIN_ENABLEMENT] already has status MIGRATION_STATUS_COMPLETED, skipping
+ERROR: logging before google.Init: I0822 02:42:27.953486      58 manager.go:91] Migration [MIGRATION_ID_BUILTIN_SIDECARS_TO_PLUGINS] is enabled
+ERROR: logging before google.Init: I0822 02:42:27.954514      58 manager.go:100] Migration [MIGRATION_ID_BUILTIN_SIDECARS_TO_PLUGINS] already has status MIGRATION_STATUS_COMPLETED, skipping
+ERROR: logging before google.Init: I0822 02:42:27.953323      24 server.go:2366] initialized server successfully in 438.918815ms
+ERROR: logging before google.Init: W0822 02:42:27.955060     111 cache.go:56] Cache(loadCodeAssistResponse): Singleflight refresh failed: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: E0822 02:42:27.955961     111 errorreport.go:223] error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: W0822 02:42:27.956720     111 cache.go:56] Cache(userInfo): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: E0822 02:42:27.957162     111 errorreport.go:223] failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: W0822 02:42:27.958855      60 cache.go:56] Cache(loadCodeAssistResponse): Singleflight refresh failed: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: E0822 02:42:27.959527      60 errorreport.go:223] error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: W0822 02:42:27.959908      60 cache.go:56] Cache(userInfo): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: E0822 02:42:27.960350      60 errorreport.go:223] failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: I0822 02:42:27.980933       1 auto_updater.go:305] Spawned background update process with PID 4153
+ERROR: logging before google.Init: I0822 02:42:27.988719       1 common.go:150] Launching CLI mode
+ERROR: logging before google.Init: E0822 02:42:27.993312       1 launchsteps.go:84] Failed to resolve GeminiDir ".gemini": .gemini must be an absolute path: path is not absolute, falling back to default
+ERROR: logging before google.Init: I0822 02:42:27.995422       1 common.go:172] CLI app data directory: /opt/data/profiles/banker/home/.gemini/antigravity-cli
+ERROR: logging before google.Init: I0822 02:42:27.997457       1 server.go:270] Creating CLI server backend: product=antigravity workspaceDirs=[/opt/data] appDataDir=/opt/data/profiles/banker/home/.gemini/antigravity-cli cascadeManager=true codeAssist=true
+ERROR: logging before google.Init: I0822 02:42:28.004522       1 composite_token_storage.go:123] Using file-based token storage because container environment detected
+ERROR: logging before google.Init: I0822 02:42:28.008761       1 auth_provider.go:734] [AuthProvider] SetEnableBusinessLogin called with enable: true
+ERROR: logging before google.Init: I0822 02:42:28.042671     121 store_client.go:490] summary store: starting background reconciliation (trigger=empty_on_open)
+ERROR: logging before google.Init: E0822 02:42:28.048471     121 server.go:2603] Failed to read conversations directory /opt/data/profiles/banker/home/.gemini/antigravity/conversations: open /opt/data/profiles/banker/home/.gemini/antigravity/conversations: no such file or directory
+ERROR: logging before google.Init: I0822 02:42:28.052913     121 server.go:2481] ListConversations returning 0 summaries
+ERROR: logging before google.Init: I0822 02:42:28.055048     121 store_client.go:503] summary store: reconcile func returned 0 records, skipping
+ERROR: logging before google.Init: W0822 02:42:28.061690     116 cache.go:56] Cache(loadCodeAssistResponse): Singleflight refresh failed: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: I0822 02:42:28.061781       1 project.go:77] project: created project "data" (id=7adbf433-dc9a-4037-9f45-d5f8f7d58492) at /opt/data/profiles/banker/home/.gemini/config/projects/7adbf433-dc9a-4037-9f45-d5f8f7d58492.json
+ERROR: logging before google.Init: I0822 02:42:28.063029       1 server.go:1821] Backend project ID updated dynamically to: 7adbf433-dc9a-4037-9f45-d5f8f7d58492
+ERROR: logging before google.Init: E0822 02:42:28.062660     116 errorreport.go:223] error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: W0822 02:42:28.070743     116 cache.go:56] Cache(userInfo): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: E0822 02:42:28.071314     116 errorreport.go:223] failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: W0822 02:42:28.072600     116 cache.go:56] Cache(loadCodeAssistResponse): Singleflight refresh failed: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: E0822 02:42:28.073356     116 errorreport.go:223] error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: W0822 02:42:28.074018     116 cache.go:56] Cache(userInfo): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: E0822 02:42:28.074597     116 errorreport.go:223] failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: W0822 02:42:28.078396     163 cache.go:56] Cache(loadCodeAssistResponse): Singleflight refresh failed: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: E0822 02:42:28.078931     163 errorreport.go:223] error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: W0822 02:42:28.080382     163 cache.go:56] Cache(userInfo): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: E0822 02:42:28.082118     163 errorreport.go:223] failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: W0822 02:42:28.097348     122 cache.go:56] Cache(loadCodeAssistResponse): Singleflight refresh failed: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: E0822 02:42:28.098422     122 errorreport.go:223] error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: W0822 02:42:28.101449     122 cache.go:56] Cache(userInfo): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: E0822 02:42:28.101891     122 errorreport.go:223] failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: I0822 02:42:28.104630       1 manager.go:392] Initializing CLI store manager for workspace /opt/data
+ERROR: logging before google.Init: W0822 02:42:28.110169       1 cli_setting_manager.go:343] cli settings not available, using defaults: failed to read cli settings: open /opt/data/profiles/banker/home/.gemini/antigravity-cli/settings.json: no such file or directory
+ERROR: logging before google.Init: I0822 02:42:28.114298       1 cli_setting_manager.go:156] applyUserSettings: no shared config permissions from /opt/data/profiles/banker/home/.gemini/config/config.json
+ERROR: logging before google.Init: I0822 02:42:28.114880       1 cli_setting_manager.go:857] Skipping telemetry propagation because user is not logged in
+ERROR: logging before google.Init: I0822 02:42:28.115305       1 cli_setting_manager.go:92] CLI settings initialized: permissions=<nil>, toolPermission=request-review
+ERROR: logging before google.Init: W0822 02:42:28.116179     116 cache.go:56] Cache(loadCodeAssistResponse): Singleflight refresh failed: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: E0822 02:42:28.116631     116 errorreport.go:223] error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: W0822 02:42:28.117346     116 cache.go:56] Cache(userInfo): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: E0822 02:42:28.117690     116 errorreport.go:223] failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: I0822 02:42:28.121875       1 hooks_manager.go:53] loaded 0 named hooks from 0 hooks.json file(s)
+ERROR: logging before google.Init: I0822 02:42:28.122833       1 manager.go:565] CLI store manager initialized successfully
+ERROR: logging before google.Init: I0822 02:42:28.123293     129 quota_manager.go:36] doRefreshQuota: skipped (not logged in)
+ERROR: logging before google.Init: I0822 02:42:28.123473       1 common.go:296] CLI store manager created successfully
+ERROR: logging before google.Init: I0822 02:42:28.124145       1 cli_setting_manager.go:217] ApplyProjectPermissionGrants: no grants for project "data", cleared project permissions
+ERROR: logging before google.Init: I0822 02:42:28.186850       1 common.go:412] Starting CLI program
+CLI ready for user input
+ERROR: logging before google.Init: I0822 02:42:28.191441       1 common.go:417] CLI program exited, shutting down
+ERROR: logging before google.Init: E0822 02:42:28.192948       1 common.go:421] failed to truncate history: reading history file: open /opt/data/profiles/banker/home/.gemini/antigravity-cli/history.jsonl: no such file or directory
+ERROR: logging before google.Init: W0822 02:42:28.199820     116 cache.go:56] Cache(loadCodeAssistResponse): Singleflight refresh failed: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: E0822 02:42:28.202329     116 errorreport.go:223] error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: W0822 02:42:28.209384     116 cache.go:56] Cache(userInfo): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: E0822 02:42:28.210063     116 errorreport.go:223] failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: W0822 02:42:28.211495     116 cache.go:56] Cache(loadCodeAssistResponse): Singleflight refresh failed: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: E0822 02:42:28.212126     116 errorreport.go:223] error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: W0822 02:42:28.212833     116 cache.go:56] Cache(userInfo): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: E0822 02:42:28.213387     116 errorreport.go:223] failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+ERROR: logging before google.Init: I0822 02:42:28.215410       1 manager.go:745] CLI store manager shutting down
+ERROR: logging before google.Init: I0822 02:42:28.216096     170 server.go:2697] Language server shutting down
+ERROR: logging before google.Init: I0822 02:42:28.218604     170 server.go:2702] Waiting for migrations to complete to prevent partial migration state...
+ERROR: logging before google.Init: E0822 02:42:28.226059      67 file_watcher.go:194] skipping empty or temp file: 
+ERROR: logging before google.Init: E0822 02:42:28.227798      67 file_watcher.go:194] skipping empty or temp file: 
+ERROR: logging before google.Init: E0822 02:42:28.228405      67 file_watcher.go:194] skipping empty or temp file: 
+ERROR: logging before google.Init: E0822 02:42:28.229025      67 file_watcher.go:194] skipping empty or temp file: 

@@ -1,0 +1,10 @@
+┌─────────────────────────────────────────────────────────┐
+│           ⚕ Hermes Gateway Starting...                 │
+├─────────────────────────────────────────────────────────┤
+│  Messaging platforms + cron scheduler                    │
+│  Press Ctrl+C to stop                                   │
+└─────────────────────────────────────────────────────────┘
+
+2026-08-23 04:55:00,007 ERROR gateway.platforms.api_server: [Api_Server] Could not bind 127.0.0.1:8642: [Errno 98] error while attempting to bind on address ('127.0.0.1', 8642): [errno 98] address already in use. Set a different port in config.yaml: platforms.api_server.port
+2026-08-23 04:55:03,237 WARNING gateway.run: ✗ api_server failed to connect
+2026-08-23 04:55:03,335 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=yes parent_pid=1 parent_name=s6-svscan loadavg_1m=1.77 parent_cmdline='/package/admin/s6/command/s6-svscan -d4 -- /run/service'

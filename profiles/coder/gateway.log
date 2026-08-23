@@ -1,0 +1,26 @@
+┌─────────────────────────────────────────────────────────┐
+│           ⚕ Hermes Gateway Starting...                 │
+├─────────────────────────────────────────────────────────┤
+│  Messaging platforms + cron scheduler                    │
+│  Press Ctrl+C to stop                                   │
+└─────────────────────────────────────────────────────────┘
+
+2026-08-23 04:38:21,873 ERROR gateway.platforms.api_server: [Api_Server] Could not bind 127.0.0.1:8642: [Errno 98] error while attempting to bind on address ('127.0.0.1', 8642): [errno 98] address already in use. Set a different port in config.yaml: platforms.api_server.port
+2026-08-23 04:38:24,918 WARNING gateway.run: ✗ api_server failed to connect
+2026-08-23 04:38:27,400 WARNING gateway.run: Shutdown context: signal=SIGTERM under_systemd=yes parent_pid=1 parent_name=s6-svscan loadavg_1m=0.62 parent_cmdline='/package/admin/s6/command/s6-svscan -d4 -- /run/service'
+2026-08-23 04:38:27,766 WARNING gateway.run: Gateway drain timed out after 0.1s with 1 active agent(s), 0 in-flight cron job(s), and 0 api_server run(s); interrupting remaining work.
+2026-08-23 04:38:28,896 WARNING tools.registry: check_fn check_browser_back_requirements returned False; dependent tools will be unavailable this turn
+2026-08-23 04:38:28,899 WARNING tools.registry: check_fn _browser_cdp_check returned False; dependent tools will be unavailable this turn
+2026-08-23 04:38:28,902 WARNING tools.registry: check_fn check_browser_click_requirements returned False; dependent tools will be unavailable this turn
+2026-08-23 04:38:28,905 WARNING tools.registry: check_fn check_browser_requirements returned False; dependent tools will be unavailable this turn
+2026-08-23 04:38:28,909 WARNING tools.registry: check_fn _browser_dialog_check returned False; dependent tools will be unavailable this turn
+2026-08-23 04:38:28,924 WARNING tools.registry: check_fn check_browser_navigate_requirements returned False; dependent tools will be unavailable this turn
+2026-08-23 04:38:28,927 WARNING tools.registry: check_fn check_browser_press_requirements returned False; dependent tools will be unavailable this turn
+2026-08-23 04:38:28,930 WARNING tools.registry: check_fn check_browser_scroll_requirements returned False; dependent tools will be unavailable this turn
+2026-08-23 04:38:28,932 WARNING tools.registry: check_fn check_browser_snapshot_requirements returned False; dependent tools will be unavailable this turn
+2026-08-23 04:38:28,935 WARNING tools.registry: check_fn check_browser_type_requirements returned False; dependent tools will be unavailable this turn
+2026-08-23 04:38:28,938 WARNING tools.registry: check_fn check_browser_vision_requirements returned False; dependent tools will be unavailable this turn
+2026-08-23 04:38:28,977 WARNING tools.registry: check_fn check_computer_use_requirements returned False; dependent tools will be unavailable this turn
+2026-08-23 04:38:29,741 WARNING tools.registry: check_fn _check_kanban_mode returned False; dependent tools will be unavailable this turn
+2026-08-23 04:38:29,744 WARNING tools.registry: check_fn _check_kanban_orchestrator_mode returned False; dependent tools will be unavailable this turn
+⚡ Interrupted during API call.

@@ -1,0 +1,1 @@
+{"pid": 1111, "kind": "hermes-gateway", "argv": ["/opt/hermes/.venv/bin/hermes", "gateway", "run", "--replace"], "start_time": 11290730, "hermes_home": "/opt/data/profiles/coder"}
