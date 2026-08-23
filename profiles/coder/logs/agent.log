@@ -28113,3 +28113,317 @@ openai.RateLimitError: Error code: 429 - [{'error': {'code': 429, 'message': 'Re
 2026-08-23 04:57:31,053 INFO [20260823_035953_c2bcbf06] run_agent: OpenAI client aborted (stream_interrupt_abort, shared=False, tcp_force_closed=1, deferred_close=stranger_thread) thread=hermes-gateway_1:139663869208256 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
 2026-08-23 04:57:31,055 INFO run_agent: OpenAI client closed (stream_error_cleanup, shared=False, tcp_force_closed=0) thread=Thread-160 (<lambda>):139663840884416 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
 2026-08-23 04:57:31,125 INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-161 (<lambda>):139664162268864 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:57:34,268 INFO hermes_plugins.discord_platform.adapter: [Discord] Flushing text batch agent:main:discord:thread:1540932711722651798:1540932711722651798 (97 chars)
+2026-08-23 04:57:34,414 INFO [20260823_035953_c2bcbf06] run_agent: OpenAI client aborted (stream_interrupt_abort, shared=False, tcp_force_closed=1, deferred_close=stranger_thread) thread=hermes-gateway_1:139663869208256 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:57:34,416 INFO run_agent: OpenAI client closed (stream_error_cleanup, shared=False, tcp_force_closed=0) thread=Thread-161 (<lambda>):139664162268864 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:57:34,504 INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-162 (<lambda>):139663840884416 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:57:41,329 ERROR agent.chat_completion_helpers: Streaming failed before delivery: Error code: 429 - [{'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}]
+Traceback (most recent call last):
+  File "/opt/hermes/agent/chat_completion_helpers.py", line 4721, in _call
+    result["response"] = _call_chat_completions(stream_attempt_id)
+                         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/agent/chat_completion_helpers.py", line 3993, in _call_chat_completions
+    relay_llm.stream(
+    ~~~~~~~~~~~~~~~~^
+        api_kwargs,
+        ^^^^^^^^^^^
+    ...<19 lines>...
+        defer_logical_completion=True,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/hermes/agent/relay_llm.py", line 395, in stream
+    return ManagedLlmStream(
+        request,
+    ...<11 lines>...
+        defer_logical_completion=defer_logical_completion,
+    )
+  File "/opt/hermes/agent/relay_llm.py", line 478, in __init__
+    raw_stream = stream_factory(request)
+  File "/opt/hermes/agent/chat_completion_helpers.py", line 3930, in _open_stream
+    return request_client.chat.completions.create(**stream_kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/openai/resources/chat/completions/completions.py", line 1204, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.RateLimitError: Error code: 429 - [{'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}]
+2026-08-23 04:57:41,339 INFO run_agent: OpenAI client closed (stream_error_cleanup, shared=False, tcp_force_closed=1) thread=Thread-162 (<lambda>):139663840884416 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:57:41,348 WARNING [20260823_035953_c2bcbf06] agent.conversation_loop: API call failed (attempt 1/3) error_type=RateLimitError thread=hermes-gateway_1:139663869208256 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro summary=HTTP 429: [{
+  "error": {
+    "code": 429,
+    "message": "Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+]
+2026-08-23 04:57:41,349 WARNING [20260823_035953_c2bcbf06] agent.conversation_loop: Retrying API call in 2.5962481843156215s (attempt 1/3) thread=hermes-gateway_1:139663869208256 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro policy=default error=Error code: 429 - [{'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}]
+2026-08-23 04:57:43,994 INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-163 (<lambda>):139664162268864 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:57:49,376 INFO hermes_cli.mem_trim: memory trim: reason=messaging gateway housekeeping malloc_trim=1 rss_kib=376788->341288 rss_anon_kib=335768->300268 threads=17 duration_ms=198.9
+2026-08-23 04:57:49,892 ERROR agent.chat_completion_helpers: Streaming failed before delivery: Error code: 429 - [{'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}]
+Traceback (most recent call last):
+  File "/opt/hermes/agent/chat_completion_helpers.py", line 4721, in _call
+    result["response"] = _call_chat_completions(stream_attempt_id)
+                         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/agent/chat_completion_helpers.py", line 3993, in _call_chat_completions
+    relay_llm.stream(
+    ~~~~~~~~~~~~~~~~^
+        api_kwargs,
+        ^^^^^^^^^^^
+    ...<19 lines>...
+        defer_logical_completion=True,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/hermes/agent/relay_llm.py", line 395, in stream
+    return ManagedLlmStream(
+        request,
+    ...<11 lines>...
+        defer_logical_completion=defer_logical_completion,
+    )
+  File "/opt/hermes/agent/relay_llm.py", line 478, in __init__
+    raw_stream = stream_factory(request)
+  File "/opt/hermes/agent/chat_completion_helpers.py", line 3930, in _open_stream
+    return request_client.chat.completions.create(**stream_kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/openai/resources/chat/completions/completions.py", line 1204, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.RateLimitError: Error code: 429 - [{'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}]
+2026-08-23 04:57:49,901 INFO run_agent: OpenAI client closed (stream_error_cleanup, shared=False, tcp_force_closed=1) thread=Thread-163 (<lambda>):139664162268864 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:57:49,913 WARNING [20260823_035953_c2bcbf06] agent.conversation_loop: API call failed (attempt 2/3) error_type=RateLimitError thread=hermes-gateway_1:139663869208256 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro summary=HTTP 429: [{
+  "error": {
+    "code": 429,
+    "message": "Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+]
+2026-08-23 04:57:49,914 WARNING [20260823_035953_c2bcbf06] agent.conversation_loop: Retrying API call in 5.273610201992983s (attempt 2/3) thread=hermes-gateway_1:139663869208256 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro policy=default error=Error code: 429 - [{'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}]
+2026-08-23 04:57:53,074 INFO hermes_plugins.discord_platform.adapter: [Discord] Flushing text batch agent:main:discord:thread:1540932711722651798:1540932711722651798 (851 chars)
+2026-08-23 04:57:53,190 INFO [20260823_035953_c2bcbf06] agent.turn_context: conversation turn: session=20260823_035953_c2bcbf06 model=google/gemini-2.5-pro provider=vertex platform=discord history=191 msg='[Triggering message id: `1540948164251746374` — use as `message_id` for reply/re...'
+2026-08-23 04:57:53,292 INFO [20260823_035953_c2bcbf06] agent.conversation_loop: Repaired 3 message-alternation violations before request (session=20260823_035953_c2bcbf06)
+2026-08-23 04:57:53,357 INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-164 (<lambda>):139663880746688 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:57:57,007 INFO [20260823_035953_c2bcbf06] agent.conversation_loop: API call #1: model=google/gemini-2.5-pro provider=vertex in=169879 out=137 total=170016 latency=3.7s cache=151660/169879 (89%)
+2026-08-23 04:57:57,082 INFO tools.terminal_tool: Creating new local environment for task default...
+2026-08-23 04:57:57,134 INFO tools.environments.base: Session snapshot created (session=b23195fdf8a8, cwd=/opt/data)
+2026-08-23 04:57:57,134 INFO tools.terminal_tool: local environment ready for task default
+2026-08-23 04:58:00,016 WARNING [20260823_035953_c2bcbf06] agent.tool_executor: Tool terminal returned error (2.94s): {"output": "On branch master\nChanges not staged for commit:\n  (use \"git add <file>...\" to update what will be committed)\n  (use \"git restore <file>...\" to discard changes in working directory)\
+2026-08-23 04:58:00,028 INFO hermes_plugins.discord_platform.adapter: [Discord] Flushing text batch agent:main:discord:thread:1540932711722651798:1540932711722651798 (145 chars)
+2026-08-23 04:58:00,063 INFO [20260823_035953_c2bcbf06] agent.conversation_loop: Turn ended: reason=interrupted_during_api_call model=google/gemini-2.5-pro api_calls=2/150 budget=2/150 tool_turns=25 last_msg_role=assistant response_len=65 session=20260823_035953_c2bcbf06
+2026-08-23 04:58:00,163 INFO [20260823_035953_c2bcbf06] run_agent: OpenAI client created (agent_init, shared=True) thread=hermes-gateway_1:139663869208256 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:58:00,191 INFO [20260823_035953_c2bcbf06] agent.turn_context: conversation turn: session=20260823_035953_c2bcbf06 model=google/gemini-2.5-pro provider=vertex platform=discord history=192 msg='[Replying to: "**Committing the Code**  I\'m now in the process of committing the...'
+2026-08-23 04:58:00,324 INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-167 (<lambda>):139663461312192 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:58:05,018 INFO hermes_plugins.discord_platform.adapter: [Discord] Flushing text batch agent:main:discord:thread:1540932711722651798:1540932711722651798 (742 chars)
+2026-08-23 04:58:05,116 INFO [20260823_035953_c2bcbf06] run_agent: OpenAI client aborted (stream_interrupt_abort, shared=False, tcp_force_closed=1, deferred_close=stranger_thread) thread=hermes-gateway_1:139663869208256 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:58:05,120 INFO run_agent: OpenAI client closed (stream_error_cleanup, shared=False, tcp_force_closed=0) thread=Thread-167 (<lambda>):139663461312192 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:58:05,190 INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-168 (<lambda>):139663845082816 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:58:11,841 ERROR agent.chat_completion_helpers: Streaming failed before delivery: Error code: 429 - [{'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}]
+Traceback (most recent call last):
+  File "/opt/hermes/agent/chat_completion_helpers.py", line 4721, in _call
+    result["response"] = _call_chat_completions(stream_attempt_id)
+                         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/agent/chat_completion_helpers.py", line 3993, in _call_chat_completions
+    relay_llm.stream(
+    ~~~~~~~~~~~~~~~~^
+        api_kwargs,
+        ^^^^^^^^^^^
+    ...<19 lines>...
+        defer_logical_completion=True,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/hermes/agent/relay_llm.py", line 395, in stream
+    return ManagedLlmStream(
+        request,
+    ...<11 lines>...
+        defer_logical_completion=defer_logical_completion,
+    )
+  File "/opt/hermes/agent/relay_llm.py", line 478, in __init__
+    raw_stream = stream_factory(request)
+  File "/opt/hermes/agent/chat_completion_helpers.py", line 3930, in _open_stream
+    return request_client.chat.completions.create(**stream_kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/openai/resources/chat/completions/completions.py", line 1204, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.RateLimitError: Error code: 429 - [{'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}]
+2026-08-23 04:58:11,861 INFO run_agent: OpenAI client closed (stream_error_cleanup, shared=False, tcp_force_closed=1) thread=Thread-168 (<lambda>):139663845082816 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:58:11,870 WARNING [20260823_035953_c2bcbf06] agent.conversation_loop: API call failed (attempt 1/3) error_type=RateLimitError thread=hermes-gateway_1:139663869208256 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro summary=HTTP 429: [{
+  "error": {
+    "code": 429,
+    "message": "Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+]
+2026-08-23 04:58:11,871 WARNING [20260823_035953_c2bcbf06] agent.conversation_loop: Retrying API call in 2.624805684552572s (attempt 1/3) thread=hermes-gateway_1:139663869208256 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro policy=default error=Error code: 429 - [{'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}]
+2026-08-23 04:58:14,715 INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-169 (<lambda>):139663845082816 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:58:16,134 INFO hermes_plugins.discord_platform.adapter: [Discord] Flushing text batch agent:main:discord:thread:1540932711722651798:1540932711722651798 (542 chars)
+2026-08-23 04:58:16,205 INFO [20260823_035953_c2bcbf06] run_agent: OpenAI client aborted (stream_interrupt_abort, shared=False, tcp_force_closed=1, deferred_close=stranger_thread) thread=hermes-gateway_1:139663869208256 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:58:16,207 INFO run_agent: OpenAI client closed (stream_error_cleanup, shared=False, tcp_force_closed=0) thread=Thread-169 (<lambda>):139663845082816 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:58:16,273 INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-170 (<lambda>):139663461312192 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:58:22,230 INFO hermes_plugins.discord_platform.adapter: [Discord] Flushing text batch agent:main:discord:thread:1540932711722651798:1540932711722651798 (276 chars)
+2026-08-23 04:58:22,265 INFO [20260823_035953_c2bcbf06] run_agent: OpenAI client aborted (stream_interrupt_abort, shared=False, tcp_force_closed=1, deferred_close=stranger_thread) thread=hermes-gateway_1:139663869208256 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:58:22,268 INFO run_agent: OpenAI client closed (stream_error_cleanup, shared=False, tcp_force_closed=0) thread=Thread-170 (<lambda>):139663461312192 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:58:22,334 INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-171 (<lambda>):139663845082816 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:58:30,528 ERROR agent.chat_completion_helpers: Streaming failed before delivery: Error code: 429 - [{'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}]
+Traceback (most recent call last):
+  File "/opt/hermes/agent/chat_completion_helpers.py", line 4721, in _call
+    result["response"] = _call_chat_completions(stream_attempt_id)
+                         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/agent/chat_completion_helpers.py", line 3993, in _call_chat_completions
+    relay_llm.stream(
+    ~~~~~~~~~~~~~~~~^
+        api_kwargs,
+        ^^^^^^^^^^^
+    ...<19 lines>...
+        defer_logical_completion=True,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/hermes/agent/relay_llm.py", line 395, in stream
+    return ManagedLlmStream(
+        request,
+    ...<11 lines>...
+        defer_logical_completion=defer_logical_completion,
+    )
+  File "/opt/hermes/agent/relay_llm.py", line 478, in __init__
+    raw_stream = stream_factory(request)
+  File "/opt/hermes/agent/chat_completion_helpers.py", line 3930, in _open_stream
+    return request_client.chat.completions.create(**stream_kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/openai/resources/chat/completions/completions.py", line 1204, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.RateLimitError: Error code: 429 - [{'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}]
+2026-08-23 04:58:30,642 INFO run_agent: OpenAI client closed (stream_error_cleanup, shared=False, tcp_force_closed=1) thread=Thread-171 (<lambda>):139663845082816 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:58:30,657 WARNING [20260823_035953_c2bcbf06] agent.conversation_loop: API call failed (attempt 1/3) error_type=RateLimitError thread=hermes-gateway_1:139663869208256 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro summary=HTTP 429: [{
+  "error": {
+    "code": 429,
+    "message": "Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+]
+2026-08-23 04:58:30,659 WARNING [20260823_035953_c2bcbf06] agent.conversation_loop: Retrying API call in 2.687710949252743s (attempt 1/3) thread=hermes-gateway_1:139663869208256 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro policy=default error=Error code: 429 - [{'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}]
+2026-08-23 04:58:33,502 INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-172 (<lambda>):139663461312192 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:58:37,150 INFO hermes_plugins.discord_platform.adapter: [Discord] Flushing text batch agent:main:discord:thread:1540932711722651798:1540932711722651798 (48 chars)
+2026-08-23 04:58:37,400 INFO [20260823_035953_c2bcbf06] run_agent: OpenAI client aborted (stream_interrupt_abort, shared=False, tcp_force_closed=1, deferred_close=stranger_thread) thread=hermes-gateway_1:139663869208256 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:58:37,408 INFO run_agent: OpenAI client closed (stream_error_cleanup, shared=False, tcp_force_closed=0) thread=Thread-172 (<lambda>):139663461312192 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:58:37,575 INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-173 (<lambda>):139663845082816 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:58:44,949 ERROR agent.chat_completion_helpers: Streaming failed before delivery: Error code: 429 - [{'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}]
+Traceback (most recent call last):
+  File "/opt/hermes/agent/chat_completion_helpers.py", line 4721, in _call
+    result["response"] = _call_chat_completions(stream_attempt_id)
+                         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/agent/chat_completion_helpers.py", line 3993, in _call_chat_completions
+    relay_llm.stream(
+    ~~~~~~~~~~~~~~~~^
+        api_kwargs,
+        ^^^^^^^^^^^
+    ...<19 lines>...
+        defer_logical_completion=True,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/hermes/agent/relay_llm.py", line 395, in stream
+    return ManagedLlmStream(
+        request,
+    ...<11 lines>...
+        defer_logical_completion=defer_logical_completion,
+    )
+  File "/opt/hermes/agent/relay_llm.py", line 478, in __init__
+    raw_stream = stream_factory(request)
+  File "/opt/hermes/agent/chat_completion_helpers.py", line 3930, in _open_stream
+    return request_client.chat.completions.create(**stream_kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/openai/_utils/_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/openai/resources/chat/completions/completions.py", line 1204, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hermes/.venv/lib/python3.13/site-packages/openai/_base_client.py", line 1070, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.RateLimitError: Error code: 429 - [{'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}]
+2026-08-23 04:58:44,965 INFO run_agent: OpenAI client closed (stream_error_cleanup, shared=False, tcp_force_closed=1) thread=Thread-173 (<lambda>):139663845082816 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:58:44,968 WARNING [20260823_035953_c2bcbf06] agent.conversation_loop: API call failed (attempt 1/3) error_type=RateLimitError thread=hermes-gateway_1:139663869208256 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro summary=HTTP 429: [{
+  "error": {
+    "code": 429,
+    "message": "Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+]
+2026-08-23 04:58:44,975 WARNING [20260823_035953_c2bcbf06] agent.conversation_loop: Retrying API call in 2.991705127834214s (attempt 1/3) thread=hermes-gateway_1:139663869208256 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro policy=default error=Error code: 429 - [{'error': {'code': 429, 'message': 'Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.', 'status': 'RESOURCE_EXHAUSTED'}}]
+2026-08-23 04:58:48,057 INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-174 (<lambda>):139663845082816 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:58:49,789 INFO hermes_cli.mem_trim: memory trim: reason=messaging gateway housekeeping malloc_trim=1 rss_kib=386296->349280 rss_anon_kib=345276->308260 threads=17 duration_ms=411.3
+2026-08-23 04:58:50,382 INFO hermes_plugins.discord_platform.adapter: [Discord] Flushing text batch agent:main:discord:thread:1540932711722651798:1540932711722651798 (807 chars)
+2026-08-23 04:58:50,583 INFO [20260823_035953_c2bcbf06] run_agent: OpenAI client aborted (stream_interrupt_abort, shared=False, tcp_force_closed=1, deferred_close=stranger_thread) thread=hermes-gateway_1:139663869208256 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:58:50,586 INFO run_agent: OpenAI client closed (stream_error_cleanup, shared=False, tcp_force_closed=0) thread=Thread-174 (<lambda>):139663845082816 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
+2026-08-23 04:58:50,674 INFO run_agent: OpenAI client created (chat_completion_stream_request, shared=False) thread=Thread-175 (<lambda>):139663478093504 provider=vertex base_url=https://us-central1-aiplatform.googleapis.com/v1beta1/projects/tron-solutions-503808/locations/us-central1/endpoints/openapi model=google/gemini-2.5-pro
