@@ -4151,3 +4151,12 @@ discord.errors.NotFound: 404 Not Found (error code: 10003): Unknown Channel
 2026-08-23 04:58:24,167 INFO hermes_plugins.discord_platform.adapter: [Discord] Flushing text batch agent:main:discord:thread:1540932711722651798:1540932711722651798 (78 chars)
 2026-08-23 04:58:38,743 INFO hermes_plugins.discord_platform.adapter: [Discord] Flushing text batch agent:main:discord:thread:1540932711722651798:1540932711722651798 (93 chars)
 2026-08-23 04:58:39,496 INFO hermes_plugins.discord_platform.adapter: [Discord] Flushing text batch agent:main:discord:thread:1540932711722651798:1540932711722651798 (78 chars)
+2026-08-23 04:58:57,730 INFO hermes_plugins.discord_platform.adapter: [Discord] Flushing text batch agent:main:discord:thread:1540932711722651798:1540932711722651798 (1181 chars)
+2026-08-23 04:59:05,570 INFO hermes_plugins.discord_platform.adapter: [Discord] Flushing text batch agent:main:discord:thread:1540932711722651798:1540932711722651798 (172 chars)
+2026-08-23 04:59:10,553 INFO hermes_plugins.discord_platform.adapter: [Discord] Flushing text batch agent:main:discord:thread:1540932711722651798:1540932711722651798 (852 chars)
+2026-08-23 04:59:12,332 INFO hermes_plugins.discord_platform.adapter: [Discord] Flushing text batch agent:main:discord:thread:1540932711722651798:1540932711722651798 (93 chars)
+2026-08-23 04:59:17,704 INFO hermes_plugins.discord_platform.adapter: [Discord] Flushing text batch agent:main:discord:thread:1540932711722651798:1540932711722651798 (612 chars)
+2026-08-23 04:59:22,358 INFO gateway.run: response ready: platform=discord chat=1540932711722651798 time=65.4s api_calls=8 response=136 chars
+2026-08-23 04:59:22,390 INFO gateway.platforms.base: [Discord] Sending response (136 chars) to 1540932711722651798
+2026-08-23 04:59:26,359 INFO hermes_plugins.discord_platform.adapter: [Discord] Flushing text batch agent:main:discord:thread:1540932711722651798:1540932711722651798 (89 chars)
+2026-08-23 04:59:26,806 INFO gateway.run: inbound message: platform=discord user=hermes-jr-dev chat=1540932711722651798 msg="⚡ Interrupting current task. I'll respond to your message shortly. [response int" reply_to_id=1540948546889453618 reply_to_text='⚠️ The model returned no response after processing tool results. This can happen'
